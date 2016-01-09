@@ -7,16 +7,20 @@
 //
 
 #import "AppDelegate.h"
+#import "DayListViewController.h"
 
-@interface AppDelegate ()
-
-@end
+NSString *const kOpenWeatherAPIKey = @"43aab2d09d3077218bc6725afff5c36c";
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    DayListViewController *dayListView = [[UIStoryboard storyboardWithName:@"Main"
+                                                                       bundle:nil]
+                                             instantiateViewControllerWithIdentifier:@"DayListViewID"];
+
+    UINavigationController *rootNavigationController = [[UINavigationController alloc] initWithRootViewController:dayListView];
+    self.window.rootViewController = rootNavigationController;
     return YES;
 }
 

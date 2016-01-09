@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0972E7181C419B7F002E54F0 /* DayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0972E7171C419B7F002E54F0 /* DayListViewController.m */; };
+		0972E71F1C41A7D0002E54F0 /* DayItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0972E71E1C41A7D0002E54F0 /* DayItemCell.m */; };
 		09BA4B4D1C417A470037FFFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4B4C1C417A470037FFFE /* main.m */; };
 		09BA4B501C417A470037FFFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4B4F1C417A470037FFFE /* AppDelegate.m */; };
 		09BA4B531C417A470037FFFE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4B521C417A470037FFFE /* ViewController.m */; };
@@ -17,6 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0972E7161C419B7F002E54F0 /* DayListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DayListViewController.h; path = "View Controllers/DayListViewController.h"; sourceTree = "<group>"; };
+		0972E7171C419B7F002E54F0 /* DayListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DayListViewController.m; path = "View Controllers/DayListViewController.m"; sourceTree = "<group>"; };
+		0972E71D1C41A7D0002E54F0 /* DayItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DayItemCell.h; path = "View Controllers/DayItemCell.h"; sourceTree = "<group>"; };
+		0972E71E1C41A7D0002E54F0 /* DayItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DayItemCell.m; path = "View Controllers/DayItemCell.m"; sourceTree = "<group>"; };
 		09BA4B481C417A470037FFFE /* JTWeatherProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JTWeatherProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09BA4B4C1C417A470037FFFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		09BA4B4E1C417A470037FFFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,6 +75,10 @@
 				09BA4B4F1C417A470037FFFE /* AppDelegate.m */,
 				09BA4B511C417A470037FFFE /* ViewController.h */,
 				09BA4B521C417A470037FFFE /* ViewController.m */,
+				0972E7161C419B7F002E54F0 /* DayListViewController.h */,
+				0972E7171C419B7F002E54F0 /* DayListViewController.m */,
+				0972E71D1C41A7D0002E54F0 /* DayItemCell.h */,
+				0972E71E1C41A7D0002E54F0 /* DayItemCell.m */,
 				09BA4B541C417A470037FFFE /* Main.storyboard */,
 				09BA4B571C417A470037FFFE /* Assets.xcassets */,
 				09BA4B591C417A470037FFFE /* LaunchScreen.storyboard */,
@@ -209,8 +219,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				09BA4B531C417A470037FFFE /* ViewController.m in Sources */,
+				0972E71F1C41A7D0002E54F0 /* DayItemCell.m in Sources */,
 				09BA4B501C417A470037FFFE /* AppDelegate.m in Sources */,
 				09BA4B4D1C417A470037FFFE /* main.m in Sources */,
+				0972E7181C419B7F002E54F0 /* DayListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +334,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = JTWeatherProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.airlatech.JTWeatherProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -335,7 +347,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = JTWeatherProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.airlatech.JTWeatherProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";

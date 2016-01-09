@@ -4,6 +4,21 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-JSONModel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-KFOpenWeatherMapAPI.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-LLARingSpinnerView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>5F0F738471E6257F98FA1B1F</key>
+		<key>1D9BAFB6C08C801D6C1E50F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>736FDF694433D14DFFE9DEA0</key>
+		<key>22E8DBBBE2CF268D977E2534</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E0F31D8069646D5E292DAFAC</key>
+		<key>63BD13AE79F522961D9BAFAB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7CC0B6C4F8C490E1B13F9747</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B48D53C6BB624F7D5586EAF6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E79267F2C76EC72DF8440BE9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

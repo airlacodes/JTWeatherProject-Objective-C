@@ -1,6 +1,6 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/LLARingSpinnerView" "${PODS_ROOT}/Headers/Public/MBProgressHUD"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/LLARingSpinnerView" -isystem "${PODS_ROOT}/Headers/Public/MBProgressHUD"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-LLARingSpinnerView" -l"Pods-MBProgressHUD" -framework "CoreGraphics" -framework "UIKit"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/JSONModel" "${PODS_ROOT}/Headers/Public/KFOpenWeatherMapAPI" "${PODS_ROOT}/Headers/Public/LLARingSpinnerView" "${PODS_ROOT}/Headers/Public/MBProgressHUD"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/JSONModel" -isystem "${PODS_ROOT}/Headers/Public/KFOpenWeatherMapAPI" -isystem "${PODS_ROOT}/Headers/Public/LLARingSpinnerView" -isystem "${PODS_ROOT}/Headers/Public/MBProgressHUD"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-AFNetworking" -l"Pods-JSONModel" -l"Pods-KFOpenWeatherMapAPI" -l"Pods-LLARingSpinnerView" -l"Pods-MBProgressHUD" -framework "CoreGraphics" -framework "MobileCoreServices" -framework "Security" -framework "SystemConfiguration" -framework "UIKit"
 OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
 PODS_ROOT = ${SRCROOT}/Pods

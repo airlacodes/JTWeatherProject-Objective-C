@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+FOUNDATION_EXTERN NSString *const kOpenWeatherAPIKey;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
