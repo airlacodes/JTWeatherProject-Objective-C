@@ -9,6 +9,7 @@
 #import "DayListViewController.h"
 #import "AppDelegate.h"
 #import "DayItemCell.h"
+#import "FullDayOverlayView.h" 
 
 #import <ChameleonFramework/Chameleon.h>
 
@@ -25,6 +26,7 @@
 int const kAmountOfDays = 5;
 
 @interface DayListViewController ()
+@property (weak, nonatomic) IBOutlet FullDayOverlayView *fullDayOverlay;
 @property (nonatomic, strong) KFOpenWeatherMapAPIClient *apiClient;
 @property (nonatomic, strong) NSMutableArray *weatherDays;
 @property (nonatomic, strong) NSMutableArray *listOfDays;
@@ -39,6 +41,8 @@ int const kAmountOfDays = 5;
     _dayListTableView.delegate = self;
     _dayListTableView.dataSource = self;
     _weatherDays = [NSMutableArray array];
+
+    _fullDayOverlay.hidden = YES;
 
     /// Get day of the week in English
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -67,6 +71,22 @@ int const kAmountOfDays = 5;
 }
 
 #pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Animate
+    _fullDayOverlay.dayLabel.text = [_listOfDays objectAtIndex:indexPath.row];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [UIView transitionWithView:_fullDayOverlay
+                      duration:0.2
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:nil
+                    completion:nil];
+    self.navigationController.navigationBar.hidden = YES;
+    _fullDayOverlay.hidden = NO;
+
+
+
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _weatherDays.count;

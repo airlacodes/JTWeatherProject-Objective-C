@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--JTWeatherProject-->
@@ -28,19 +29,33 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="101"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mostly dry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oyi-gn-Bpg">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mostly dry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oyi-gn-Bpg">
                                                     <rect key="frame" x="8" y="53" width="393" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="393" id="a4Z-L4-yHr"/>
+                                                        <constraint firstAttribute="height" constant="21" id="sUa-vK-BPF"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCs-Dr-Jei">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCs-Dr-Jei">
                                                     <rect key="frame" x="8" y="0.0" width="424" height="53"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="424" id="hbn-9F-EVS"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="oyi-gn-Bpg" secondAttribute="bottom" constant="19" id="9n2-0V-fNb"/>
+                                                <constraint firstItem="iCs-Dr-Jei" firstAttribute="leading" secondItem="oyi-gn-Bpg" secondAttribute="leading" id="9nI-c2-M1c"/>
+                                                <constraint firstItem="iCs-Dr-Jei" firstAttribute="leading" secondItem="4Sb-El-qkn" secondAttribute="leadingMargin" id="AXg-VE-hbN"/>
+                                                <constraint firstItem="oyi-gn-Bpg" firstAttribute="top" secondItem="iCs-Dr-Jei" secondAttribute="bottom" id="B3E-3f-vVh"/>
+                                                <constraint firstItem="iCs-Dr-Jei" firstAttribute="top" secondItem="4Sb-El-qkn" secondAttribute="top" id="TCP-YG-MtE"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dayDescription" destination="oyi-gn-Bpg" id="qYE-Up-8kI"/>
@@ -53,17 +68,82 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="QzO-eY-JLJ"/>
                                 </connections>
                             </tableView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCw-JS-saz" customClass="FullDayOverlayView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ThB-nt-Ru5">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6MY-5R-ejW">
+                                            <rect key="frame" x="27" y="16" width="39" height="30"/>
+                                            <state key="normal" title="Close"/>
+                                            <connections>
+                                                <action selector="closeOverlayPressed:" destination="cCw-JS-saz" eventType="touchUpInside" id="RMb-Nt-RHR"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11c" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7D5-Xr-pdl">
+                                            <rect key="frame" x="231" y="74" width="139" height="98"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="98" id="PGC-q3-FUX"/>
+                                                <constraint firstAttribute="width" constant="139" id="jTP-zj-gAj"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="86"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iE4-gH-H5P">
+                                            <rect key="frame" x="247" y="53" width="106" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="106" id="2Yk-qL-1uo"/>
+                                                <constraint firstAttribute="height" constant="36" id="aMH-oQ-BnP"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avg Temp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yk-po-lbJ">
+                                            <rect key="frame" x="259" y="164" width="82" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="82" id="ibU-k6-fx0"/>
+                                                <constraint firstAttribute="height" constant="25" id="lng-Io-27D"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="iE4-gH-H5P" firstAttribute="centerX" secondItem="7D5-Xr-pdl" secondAttribute="centerX" id="3uf-Kq-IgB"/>
+                                        <constraint firstItem="0yk-po-lbJ" firstAttribute="top" secondItem="iE4-gH-H5P" secondAttribute="bottom" constant="75" id="5RK-o8-VnH"/>
+                                        <constraint firstItem="iE4-gH-H5P" firstAttribute="top" secondItem="ThB-nt-Ru5" secondAttribute="top" constant="53" id="JDE-DG-pm6"/>
+                                        <constraint firstItem="6MY-5R-ejW" firstAttribute="top" secondItem="ThB-nt-Ru5" secondAttribute="top" constant="16" id="aCH-ER-Igo"/>
+                                        <constraint firstItem="7D5-Xr-pdl" firstAttribute="centerX" secondItem="ThB-nt-Ru5" secondAttribute="centerX" id="ghH-Xf-IaV"/>
+                                        <constraint firstItem="7D5-Xr-pdl" firstAttribute="top" secondItem="ThB-nt-Ru5" secondAttribute="top" constant="74" id="hFL-YU-vDX"/>
+                                        <constraint firstItem="6MY-5R-ejW" firstAttribute="leading" secondItem="ThB-nt-Ru5" secondAttribute="leading" constant="27" id="q2v-15-8UX"/>
+                                        <constraint firstItem="0yk-po-lbJ" firstAttribute="centerX" secondItem="7D5-Xr-pdl" secondAttribute="centerX" id="rw6-4p-ebl"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="dark"/>
+                                <connections>
+                                    <outlet property="dayLabel" destination="iE4-gH-H5P" id="Ogp-05-0GA"/>
+                                </connections>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wVZ-00-yCD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="207-3S-gN4"/>
-                            <constraint firstAttribute="trailing" secondItem="wVZ-00-yCD" secondAttribute="trailing" id="bhk-NO-jC8"/>
-                            <constraint firstItem="wVZ-00-yCD" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="njw-97-8Lu"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wVZ-00-yCD" secondAttribute="bottom" id="oW4-zB-v12"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wVZ-00-yCD" secondAttribute="bottom" id="54t-cU-dsI"/>
+                            <constraint firstItem="cCw-JS-saz" firstAttribute="top" secondItem="wVZ-00-yCD" secondAttribute="top" id="6On-Bi-G8h"/>
+                            <constraint firstAttribute="trailing" secondItem="wVZ-00-yCD" secondAttribute="trailing" id="Dmd-V9-2ZR"/>
+                            <constraint firstItem="wVZ-00-yCD" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="UpE-4D-Y09"/>
+                            <constraint firstItem="cCw-JS-saz" firstAttribute="leading" secondItem="wVZ-00-yCD" secondAttribute="leading" id="XvF-sQ-ZGh"/>
+                            <constraint firstItem="cCw-JS-saz" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="hdz-Dd-E2c"/>
+                            <constraint firstItem="cCw-JS-saz" firstAttribute="trailing" secondItem="wVZ-00-yCD" secondAttribute="trailing" id="vwR-LO-aub"/>
+                            <constraint firstItem="wVZ-00-yCD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wD4-R2-sIT"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="dayListTableView" destination="wVZ-00-yCD" id="0ul-rh-DRu"/>
+                        <outlet property="fullDayOverlay" destination="cCw-JS-saz" id="M7L-79-SSK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
