@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "22E8DBBBE2CF268D977E2534"
+               BlueprintIdentifier = "40C376483DE5D6D86786E695"
                BuildableName = "libPods-LLARingSpinnerView.a"
                BlueprintName = "Pods-LLARingSpinnerView"
                ReferencedContainer = "container:Pods.xcodeproj">

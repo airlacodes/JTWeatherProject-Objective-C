@@ -12,6 +12,18 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking 3
 #define COCOAPODS_VERSION_PATCH_AFNetworking 4
 
+// ChameleonFramework
+#define COCOAPODS_POD_AVAILABLE_ChameleonFramework
+#define COCOAPODS_VERSION_MAJOR_ChameleonFramework 2
+#define COCOAPODS_VERSION_MINOR_ChameleonFramework 0
+#define COCOAPODS_VERSION_PATCH_ChameleonFramework 6
+
+// ChameleonFramework/Default
+#define COCOAPODS_POD_AVAILABLE_ChameleonFramework_Default
+#define COCOAPODS_VERSION_MAJOR_ChameleonFramework_Default 2
+#define COCOAPODS_VERSION_MINOR_ChameleonFramework_Default 0
+#define COCOAPODS_VERSION_PATCH_ChameleonFramework_Default 6
+
 // JSONModel
 #define COCOAPODS_POD_AVAILABLE_JSONModel
 #define COCOAPODS_VERSION_MAJOR_JSONModel 0

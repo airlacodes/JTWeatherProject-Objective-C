@@ -10,6 +10,8 @@
 #import "AppDelegate.h"
 #import "DayItemCell.h"
 
+#import <ChameleonFramework/Chameleon.h>
+
 #import "KFOpenWeatherMapAPIClient.h"
 #import "KFOWMWeatherResponseModel.h"
 #import "KFOWMMainWeatherModel.h"
@@ -20,41 +22,45 @@
 #import "KFOWMDailyForecastListModel.h"
 #import "KFOWMSearchResponseModel.h"
 #import "KFOWMSystemModel.h"
+int const kAmountOfDays = 5;
 
 @interface DayListViewController ()
 @property (nonatomic, strong) KFOpenWeatherMapAPIClient *apiClient;
-@property (nonatomic, copy) NSMutableArray *weatherDays;
+@property (nonatomic, strong) NSMutableArray *weatherDays;
+@property (nonatomic, strong) NSMutableArray *listOfDays;
 @end
 
 @implementation DayListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    /// set data source + delegate for tableview
     _dayListTableView.delegate = self;
     _dayListTableView.dataSource = self;
     _weatherDays = [NSMutableArray array];
-    
+
+    /// Get day of the week in English
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"EEEE"];
+    [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
+
+    ///Use current day to get the next remaining 4
+    _listOfDays = [self _generateDays:[dateFormatter stringFromDate:[NSDate date]]];
+
     self.apiClient = [[KFOpenWeatherMapAPIClient alloc] initWithAPIKey:kOpenWeatherAPIKey andAPIVersion:@"2.5"];
-    self.apiClient.temperatureType = KFOWMTemperatureTypeCelcius;
-    [self.apiClient dailyForecastForCityName:@"London" numberOfDays:5 withResultBlock:^(BOOL success, id responseData, NSError *error) {
+    [self.apiClient dailyForecastForCityName:@"London" numberOfDays:kAmountOfDays withResultBlock:
+     ^(BOOL success, id responseData, NSError *error) {
          if (success) {
              KFOWMDailyForecastResponseModel *responseModel = (KFOWMDailyForecastResponseModel *)responseData;
 
-             NSLog(@"received daily forecast: %@, %@", responseModel.city.cityName, [[responseModel.list valueForKeyPath:@"temperature.min"] componentsJoinedByString:@", "]);
-
-
              for (int i = 0; i < [responseModel count]; i++) {
+                 /// _weatherDays contains weather models of each day
                  [_weatherDays addObject:responseModel.list[i]];
              }
-
-             KFOWMDailyForecastListModel *listModel = responseModel.list[0];
-             NSLog(@"%@", listModel.dt);
-             KFOWMWeatherModel *weatherModel = listModel.weather[0];
-             NSLog(@"daily forecast first day weather icon: %@", weatherModel.toDictionary);
              [_dayListTableView reloadData];
          }
-         else
-         {
+         else {
              NSLog(@"could not get daily forecast: %@", error);
          }
      }];
@@ -62,22 +68,45 @@
 
 #pragma mark - UITableViewDelegate
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _weatherDays.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DayItemCell *dayCell = [tableView dequeueReusableCellWithIdentifier:@"day_item_cell"];
+    NSMutableArray *colorArray = [[NSMutableArray alloc] initWithArray:[NSArray arrayOfColorsWithColorScheme:ColorSchemeAnalogous usingColor:[UIColor flatMagentaColor] withFlatScheme:YES]];
+    
+    
+    dayCell.backgroundColor = [colorArray objectAtIndex:indexPath.row];
+
+    /// Get weather details for the day index
     KFOWMDailyForecastListModel *listModel = _weatherDays[indexPath.row];
     KFOWMWeatherModel *weatherModel = listModel.weather[0];
 
+    /// Configure cell
+    dayCell.dayLabel.text = [_listOfDays objectAtIndex:indexPath.row];
     dayCell.dayDescription.text = [weatherModel valueForKey:@"weatherDescription"];
     return dayCell;
 }
 
+/*Get index of current day and return the next 4 */
+- (NSMutableArray *)_generateDays:(NSString *)today {
+    NSMutableArray *dayList = [NSMutableArray array];
+    NSArray *week = @[@"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday", @"Sunday"];
 
+    NSInteger todayIndex = [week indexOfObject:today];
+    /// Run 5 times (5 days)
+    for (int i = 0; i < kAmountOfDays; i++) {
+        if (todayIndex > 6) {
+            /// avoid out of bound error as we go pass Sunday, reset to 0 (Monday)
+            todayIndex = 0;
+        }
+        [dayList insertObject:[week objectAtIndex:todayIndex] atIndex:i];
+        /// go to next day
+        todayIndex = todayIndex + 1;
+    }
+
+    [dayList replaceObjectAtIndex:0 withObject:[NSString stringWithFormat:@"%@ (Today)", today]];
+    return dayList;
+}
 @end
