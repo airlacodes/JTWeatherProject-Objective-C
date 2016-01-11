@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface DayListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+#import <CoreLocation/CoreLocation.h>
+@interface DayListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *dayListTableView;
 @end

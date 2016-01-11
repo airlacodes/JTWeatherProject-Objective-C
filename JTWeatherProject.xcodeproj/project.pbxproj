@@ -10,9 +10,10 @@
 		0972E7181C419B7F002E54F0 /* DayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0972E7171C419B7F002E54F0 /* DayListViewController.m */; };
 		0972E71F1C41A7D0002E54F0 /* DayItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0972E71E1C41A7D0002E54F0 /* DayItemCell.m */; };
 		0972E7221C41F1D7002E54F0 /* FullDayOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0972E7211C41F1D7002E54F0 /* FullDayOverlayView.m */; };
+		09A97CE81C43289E004353F7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A97CE71C43289E004353F7 /* CoreLocation.framework */; };
+		09A97CF11C435C7C004353F7 /* TimeItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A97CF01C435C7C004353F7 /* TimeItemCell.m */; };
 		09BA4B4D1C417A470037FFFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4B4C1C417A470037FFFE /* main.m */; };
 		09BA4B501C417A470037FFFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4B4F1C417A470037FFFE /* AppDelegate.m */; };
-		09BA4B531C417A470037FFFE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4B521C417A470037FFFE /* ViewController.m */; };
 		09BA4B561C417A470037FFFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09BA4B541C417A470037FFFE /* Main.storyboard */; };
 		09BA4B581C417A470037FFFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09BA4B571C417A470037FFFE /* Assets.xcassets */; };
 		09BA4B5B1C417A470037FFFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09BA4B591C417A470037FFFE /* LaunchScreen.storyboard */; };
@@ -26,12 +27,13 @@
 		0972E71E1C41A7D0002E54F0 /* DayItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DayItemCell.m; path = "View Controllers/DayItemCell.m"; sourceTree = "<group>"; };
 		0972E7201C41F1D7002E54F0 /* FullDayOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FullDayOverlayView.h; path = "View Controllers/FullDayOverlayView.h"; sourceTree = "<group>"; };
 		0972E7211C41F1D7002E54F0 /* FullDayOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FullDayOverlayView.m; path = "View Controllers/FullDayOverlayView.m"; sourceTree = "<group>"; };
+		09A97CE71C43289E004353F7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		09A97CEF1C435C7C004353F7 /* TimeItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeItemCell.h; path = "View Controllers/TimeItemCell.h"; sourceTree = "<group>"; };
+		09A97CF01C435C7C004353F7 /* TimeItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeItemCell.m; path = "View Controllers/TimeItemCell.m"; sourceTree = "<group>"; };
 		09BA4B481C417A470037FFFE /* JTWeatherProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JTWeatherProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09BA4B4C1C417A470037FFFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		09BA4B4E1C417A470037FFFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		09BA4B4F1C417A470037FFFE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		09BA4B511C417A470037FFFE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		09BA4B521C417A470037FFFE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		09BA4B551C417A470037FFFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		09BA4B571C417A470037FFFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09BA4B5A1C417A470037FFFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -46,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09A97CE81C43289E004353F7 /* CoreLocation.framework in Frameworks */,
 				B1E1B95EA761F709F5DC48E5 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,14 +79,14 @@
 			children = (
 				09BA4B4E1C417A470037FFFE /* AppDelegate.h */,
 				09BA4B4F1C417A470037FFFE /* AppDelegate.m */,
-				09BA4B511C417A470037FFFE /* ViewController.h */,
-				09BA4B521C417A470037FFFE /* ViewController.m */,
 				0972E7161C419B7F002E54F0 /* DayListViewController.h */,
 				0972E7171C419B7F002E54F0 /* DayListViewController.m */,
 				0972E71D1C41A7D0002E54F0 /* DayItemCell.h */,
+				0972E71E1C41A7D0002E54F0 /* DayItemCell.m */,
 				0972E7201C41F1D7002E54F0 /* FullDayOverlayView.h */,
 				0972E7211C41F1D7002E54F0 /* FullDayOverlayView.m */,
-				0972E71E1C41A7D0002E54F0 /* DayItemCell.m */,
+				09A97CEF1C435C7C004353F7 /* TimeItemCell.h */,
+				09A97CF01C435C7C004353F7 /* TimeItemCell.m */,
 				09BA4B541C417A470037FFFE /* Main.storyboard */,
 				09BA4B571C417A470037FFFE /* Assets.xcassets */,
 				09BA4B591C417A470037FFFE /* LaunchScreen.storyboard */,
@@ -104,6 +107,7 @@
 		35A2BB46B0E85C63CDF9189F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				09A97CE71C43289E004353F7 /* CoreLocation.framework */,
 				E96A8EFAE61637D094400190 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -223,12 +227,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09BA4B531C417A470037FFFE /* ViewController.m in Sources */,
 				0972E71F1C41A7D0002E54F0 /* DayItemCell.m in Sources */,
 				09BA4B501C417A470037FFFE /* AppDelegate.m in Sources */,
 				0972E7221C41F1D7002E54F0 /* FullDayOverlayView.m in Sources */,
 				09BA4B4D1C417A470037FFFE /* main.m in Sources */,
 				0972E7181C419B7F002E54F0 /* DayListViewController.m in Sources */,
+				09A97CF11C435C7C004353F7 /* TimeItemCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

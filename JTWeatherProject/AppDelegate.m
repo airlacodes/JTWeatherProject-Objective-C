@@ -10,6 +10,7 @@
 #import "DayListViewController.h"
 
 NSString *const kOpenWeatherAPIKey = @"43aab2d09d3077218bc6725afff5c36c";
+NSString *const kFullDayOverlayDidLoadNotification = @"kFullDayOverlayDidLoadNotification"; 
 
 @implementation AppDelegate
 

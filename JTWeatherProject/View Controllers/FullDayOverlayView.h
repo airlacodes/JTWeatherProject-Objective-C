@@ -7,8 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface FullDayOverlayView : UIVisualEffectView 
-@property(nonatomic, weak) NSString *day; 
-@property(nonatomic, weak) IBOutlet UILabel *dayLabel; 
+#import "KFOpenWeatherMapAPIClient.h"
+#import "KFOWMWeatherResponseModel.h"
+#import "KFOWMMainWeatherModel.h"
+#import "KFOWMWeatherModel.h"
+#import "KFOWMForecastResponseModel.h"
+#import "KFOWMCityModel.h"
+#import "KFOWMDailyForecastResponseModel.h"
+#import "KFOWMDailyForecastListModel.h"
+#import "KFOWMSearchResponseModel.h"
+#import "KFOWMSystemModel.h"
+
+@interface FullDayOverlayView : UIVisualEffectView <UITableViewDelegate, UITableViewDataSource, UIScrollViewAccessibilityDelegate, UIScrollViewDelegate>
+
+@property(nonatomic, weak) NSString *day;
+@property (nonatomic, weak) CLLocation *currentLocation; 
+@property(nonatomic, weak) IBOutlet UILabel *dayLabel;
+@property (strong, nonatomic) KFOWMDailyForecastListModel *dailyForecastModel;
 @end

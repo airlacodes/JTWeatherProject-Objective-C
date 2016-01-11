@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 FOUNDATION_EXTERN NSString *const kOpenWeatherAPIKey;
+FOUNDATION_EXTERN NSString *const kFullDayOverlayDidLoadNotification;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
