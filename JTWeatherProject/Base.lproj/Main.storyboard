@@ -161,8 +161,12 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mrb-Vo-4zK">
+                                            <rect key="frame" x="0.0" y="83" width="600" height="128"/>
+                                        </scrollView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="mrb-Vo-4zK" firstAttribute="trailing" secondItem="ogO-hn-j9X" secondAttribute="trailing" id="3wv-ZT-afE"/>
                                         <constraint firstItem="ogO-hn-j9X" firstAttribute="leading" secondItem="ThB-nt-Ru5" secondAttribute="leading" id="7J7-Mp-Shm"/>
                                         <constraint firstItem="4Wm-W0-wt6" firstAttribute="leading" secondItem="iE4-gH-H5P" secondAttribute="leading" id="AoT-Vh-vTZ"/>
                                         <constraint firstItem="ogO-hn-j9X" firstAttribute="top" secondItem="iE4-gH-H5P" secondAttribute="bottom" constant="34" id="S7G-aY-tRx"/>
@@ -174,13 +178,17 @@
                                         <constraint firstItem="4Wm-W0-wt6" firstAttribute="trailing" secondItem="iE4-gH-H5P" secondAttribute="trailing" id="cpU-Zd-85A"/>
                                         <constraint firstAttribute="bottom" secondItem="ogO-hn-j9X" secondAttribute="bottom" id="ena-Of-bdn"/>
                                         <constraint firstAttribute="trailing" secondItem="ogO-hn-j9X" secondAttribute="trailing" id="ffc-NC-ZpA"/>
+                                        <constraint firstItem="mrb-Vo-4zK" firstAttribute="top" secondItem="4Wm-W0-wt6" secondAttribute="bottom" constant="27" id="lBF-gh-rg0"/>
                                         <constraint firstItem="iE4-gH-H5P" firstAttribute="leading" secondItem="ThB-nt-Ru5" secondAttribute="leadingMargin" id="lRD-Wd-OBS"/>
+                                        <constraint firstItem="mrb-Vo-4zK" firstAttribute="leading" secondItem="ogO-hn-j9X" secondAttribute="leading" id="nSO-3D-YGP"/>
+                                        <constraint firstItem="iE4-gH-H5P" firstAttribute="top" secondItem="mrb-Vo-4zK" secondAttribute="bottom" constant="26" id="vG5-Kp-agS"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="dark"/>
                                 <connections>
                                     <outlet property="dailyForecastTable" destination="ogO-hn-j9X" id="Ss8-SI-StG"/>
                                     <outlet property="dayLabel" destination="iE4-gH-H5P" id="Ogp-05-0GA"/>
+                                    <outlet property="locationLabel" destination="4Wm-W0-wt6" id="bmt-gp-l9k"/>
                                 </connections>
                             </visualEffectView>
                         </subviews>

@@ -25,5 +25,6 @@
 @property(nonatomic, weak) NSString *day;
 @property (nonatomic, weak) CLLocation *currentLocation; 
 @property(nonatomic, weak) IBOutlet UILabel *dayLabel;
+@property (nonatomic, weak) IBOutlet UILabel *locationLabel;
 @property (strong, nonatomic) KFOWMDailyForecastListModel *dailyForecastModel;
 @end

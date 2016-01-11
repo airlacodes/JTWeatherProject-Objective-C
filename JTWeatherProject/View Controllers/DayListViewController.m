@@ -24,6 +24,7 @@
 @interface DayListViewController () {
     CLLocationCoordinate2D _locationCoordinate;
     BOOL _didGetLocation;
+    NSString *locationDescription;
 }
 @property (weak, nonatomic) IBOutlet FullDayOverlayView *fullDayOverlay;
 @property (nonatomic, strong) KFOpenWeatherMapAPIClient *apiClient;
@@ -61,11 +62,16 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    //prepare weather model
     KFOWMDailyForecastListModel *listModel = _weatherDays[indexPath.row];
     _fullDayOverlay.dailyForecastModel = listModel;
     _fullDayOverlay.currentLocation = _locationManager.location; 
-    // Animate
+
+    ///prepopulate labels
     _fullDayOverlay.dayLabel.text = [_listOfDays objectAtIndex:indexPath.row];
+    _fullDayOverlay.locationLabel.text = locationDescription;
+
+    // Animate full day overlay
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [UIView transitionWithView:_fullDayOverlay
                       duration:0.2
@@ -194,6 +200,7 @@
            NSLog(@"placemark.subLocality %@",_placeMarker.subLocality);
            NSLog(@"placemark.subThoroughfare %@",_placeMarker.subThoroughfare);
            self.title = [NSString stringWithFormat:@"%@ Forecast", _placeMarker.locality];
+           locationDescription = [NSString stringWithFormat:@"%@, %@", _placeMarker.locality, _placeMarker.ISOcountryCode];
        }];
 }
 @end

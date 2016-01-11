@@ -12,6 +12,7 @@
 		0972E7221C41F1D7002E54F0 /* FullDayOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0972E7211C41F1D7002E54F0 /* FullDayOverlayView.m */; };
 		09A97CE81C43289E004353F7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A97CE71C43289E004353F7 /* CoreLocation.framework */; };
 		09A97CF11C435C7C004353F7 /* TimeItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A97CF01C435C7C004353F7 /* TimeItemCell.m */; };
+		09A97CF61C4378F2004353F7 /* DayDetailStruct.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A97CF51C4378F2004353F7 /* DayDetailStruct.m */; };
 		09BA4B4D1C417A470037FFFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4B4C1C417A470037FFFE /* main.m */; };
 		09BA4B501C417A470037FFFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4B4F1C417A470037FFFE /* AppDelegate.m */; };
 		09BA4B561C417A470037FFFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09BA4B541C417A470037FFFE /* Main.storyboard */; };
@@ -30,6 +31,8 @@
 		09A97CE71C43289E004353F7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		09A97CEF1C435C7C004353F7 /* TimeItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeItemCell.h; path = "View Controllers/TimeItemCell.h"; sourceTree = "<group>"; };
 		09A97CF01C435C7C004353F7 /* TimeItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeItemCell.m; path = "View Controllers/TimeItemCell.m"; sourceTree = "<group>"; };
+		09A97CF51C4378F2004353F7 /* DayDetailStruct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DayDetailStruct.m; path = "View Controllers/DayDetailStruct.m"; sourceTree = "<group>"; };
+		09A97CF71C437900004353F7 /* DayDetailStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DayDetailStruct.h; path = "View Controllers/DayDetailStruct.h"; sourceTree = "<group>"; };
 		09BA4B481C417A470037FFFE /* JTWeatherProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JTWeatherProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09BA4B4C1C417A470037FFFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		09BA4B4E1C417A470037FFFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -83,6 +86,8 @@
 				0972E7171C419B7F002E54F0 /* DayListViewController.m */,
 				0972E71D1C41A7D0002E54F0 /* DayItemCell.h */,
 				0972E71E1C41A7D0002E54F0 /* DayItemCell.m */,
+				09A97CF51C4378F2004353F7 /* DayDetailStruct.m */,
+				09A97CF71C437900004353F7 /* DayDetailStruct.h */,
 				0972E7201C41F1D7002E54F0 /* FullDayOverlayView.h */,
 				0972E7211C41F1D7002E54F0 /* FullDayOverlayView.m */,
 				09A97CEF1C435C7C004353F7 /* TimeItemCell.h */,
@@ -232,6 +237,7 @@
 				0972E7221C41F1D7002E54F0 /* FullDayOverlayView.m in Sources */,
 				09BA4B4D1C417A470037FFFE /* main.m in Sources */,
 				0972E7181C419B7F002E54F0 /* DayListViewController.m in Sources */,
+				09A97CF61C4378F2004353F7 /* DayDetailStruct.m in Sources */,
 				09A97CF11C435C7C004353F7 /* TimeItemCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

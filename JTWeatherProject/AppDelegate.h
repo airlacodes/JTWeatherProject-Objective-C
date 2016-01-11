@@ -10,6 +10,9 @@
 FOUNDATION_EXTERN NSString *const kOpenWeatherAPIKey;
 FOUNDATION_EXTERN NSString *const kFullDayOverlayDidLoadNotification;
 
+FOUNDATION_EXTERN NSString *const kBackgroundImage;
+FOUNDATION_EXTERN NSString *const kTitle;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

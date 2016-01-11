@@ -10,7 +10,9 @@
 #import "DayListViewController.h"
 
 NSString *const kOpenWeatherAPIKey = @"43aab2d09d3077218bc6725afff5c36c";
-NSString *const kFullDayOverlayDidLoadNotification = @"kFullDayOverlayDidLoadNotification"; 
+NSString *const kFullDayOverlayDidLoadNotification = @"kFullDayOverlayDidLoadNotification";
+NSString *const kBackgroundImage = @"kDetailIcon";
+NSString *const kTitle = @"kTitle";
 
 @implementation AppDelegate
 
