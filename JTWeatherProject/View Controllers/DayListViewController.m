@@ -90,10 +90,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DayItemCell *dayCell = [tableView dequeueReusableCellWithIdentifier:@"day_item_cell"];
+
     NSMutableArray *colorArray = [[NSMutableArray alloc] initWithArray:[NSArray arrayOfColorsWithColorScheme:ColorSchemeAnalogous usingColor:[UIColor flatMagentaColor] withFlatScheme:YES]];
-    
-    
     dayCell.backgroundColor = [colorArray objectAtIndex:indexPath.row];
+
+    UIImageView *cellSelectionImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tableViewSelectorLight.png"]];
+    cellSelectionImage.alpha = 0.1;
+    dayCell.selectedBackgroundView = cellSelectionImage;
 
     /// Get weather details for the day index
     KFOWMDailyForecastListModel *listModel = _weatherDays[indexPath.row];

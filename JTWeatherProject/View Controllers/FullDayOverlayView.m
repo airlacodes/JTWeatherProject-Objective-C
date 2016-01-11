@@ -19,6 +19,7 @@
     NSMutableArray *_dailyHourForecast;
 }
 @property (strong, nonatomic) IBOutlet UITableView *dailyForecastTable;
+@property (strong, nonatomic) IBOutlet UIScrollView *detailScroll;
 
 @end
 
@@ -77,6 +78,10 @@
 
 #pragma mark - UITableViewDelegate 
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [_dailyForecastTable deselectRowAtIndexPath:indexPath animated:YES]; 
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
    return [_dailyHourForecast count];
 }
@@ -85,6 +90,10 @@
     NSDictionary *dayForecast = [_dailyHourForecast objectAtIndex:indexPath.row];
 
     TimeItemCell *timeCell = [tableView dequeueReusableCellWithIdentifier:@"time_item_cell"];
+
+    UIImageView *cellSelectionImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tableViewSelectorLight.png"]];
+    cellSelectionImage.alpha = 0.1;
+    timeCell.selectedBackgroundView = cellSelectionImage;
 
     NSDateFormatter *dateformate=[[NSDateFormatter alloc]init];
     dateformate.dateFormat = @"HH:mm a"; // Date formater
