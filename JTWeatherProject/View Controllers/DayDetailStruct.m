@@ -16,7 +16,7 @@ NSArray *DayDetails() {
 
                     @{
                         kBackgroundImage : @"rain",
-                        kTitle : @"Rain (%)",
+                        kTitle : @"Rain",
                         kForecastModelKey : @"rain",
                         kUnitType : @"%",
 

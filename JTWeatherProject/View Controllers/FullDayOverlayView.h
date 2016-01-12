@@ -10,24 +10,29 @@
 #import <CoreLocation/CoreLocation.h>
 
 #import "KFOpenWeatherMapAPIClient.h"
-#import "KFOWMWeatherResponseModel.h"
-#import "KFOWMMainWeatherModel.h"
 #import "KFOWMWeatherModel.h"
 #import "KFOWMForecastResponseModel.h"
-#import "KFOWMCityModel.h"
 #import "KFOWMDailyForecastResponseModel.h"
 #import "KFOWMDailyForecastListModel.h"
-#import "KFOWMSearchResponseModel.h"
-#import "KFOWMSystemModel.h"
 
 @interface FullDayOverlayView : UIVisualEffectView <UITableViewDelegate, UITableViewDataSource, UIScrollViewAccessibilityDelegate, UIScrollViewDelegate>
 
-@property(nonatomic, weak) NSString *day;
-@property (nonatomic, weak) CLLocation *currentLocation; 
-@property(nonatomic, weak) IBOutlet UILabel *dayLabel;
+/*! Users current location gathered from DayListViewController */
+@property (nonatomic, weak) CLLocation *currentLocation;
+
+/*! Shows the day of the week */
+@property (nonatomic, weak) IBOutlet UILabel *dayLabel;
+
+/*! Shows the location city / area + country code */
 @property (nonatomic, weak) IBOutlet UILabel *locationLabel;
+
+/*! Shows the temperature in degrees celcius */
 @property (nonatomic, weak) IBOutlet UILabel *tempLabel;
+
+/* Daily forecast model for scroller */
 @property (strong, nonatomic) KFOWMDailyForecastListModel *dailyForecastModel;
 
+/* super loads scroll data */
 - (void)loadDayDetails;
+
 @end

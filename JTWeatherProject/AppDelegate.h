@@ -10,6 +10,7 @@
 
 /*!Helpful Constants that are used across the app */
 FOUNDATION_EXTERN NSString *const kOpenWeatherAPIKey;
+FOUNDATION_EXTERN NSString *const kOpenWeatherAPIVersion;
 FOUNDATION_EXTERN NSString *const kFullDayOverlayDidLoadNotification;
 FOUNDATION_EXTERN NSString *const kFullDayOverlayDidExitNotification;
 FOUNDATION_EXTERN NSString *const kBackgroundImage;

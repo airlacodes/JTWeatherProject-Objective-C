@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 @interface DayListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
+
+/*! 5 day tableview list */ 
 @property (strong, nonatomic) IBOutlet UITableView *dayListTableView;
-@end
+
+ @end

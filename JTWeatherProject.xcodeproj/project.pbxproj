@@ -59,6 +59,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0913BDB81C448DF000AF72C1 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0972E7161C419B7F002E54F0 /* DayListViewController.h */,
+				0972E7171C419B7F002E54F0 /* DayListViewController.m */,
+				0972E7201C41F1D7002E54F0 /* FullDayOverlayView.h */,
+				0972E7211C41F1D7002E54F0 /* FullDayOverlayView.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		0913BDB91C448E0100AF72C1 /* TableView cells */ = {
+			isa = PBXGroup;
+			children = (
+				0972E71D1C41A7D0002E54F0 /* DayItemCell.h */,
+				0972E71E1C41A7D0002E54F0 /* DayItemCell.m */,
+				09A97CEF1C435C7C004353F7 /* TimeItemCell.h */,
+				09A97CF01C435C7C004353F7 /* TimeItemCell.m */,
+			);
+			name = "TableView cells";
+			sourceTree = "<group>";
+		};
 		09BA4B3F1C417A470037FFFE = {
 			isa = PBXGroup;
 			children = (
@@ -82,19 +104,10 @@
 			children = (
 				09BA4B4E1C417A470037FFFE /* AppDelegate.h */,
 				09BA4B4F1C417A470037FFFE /* AppDelegate.m */,
-				0972E7161C419B7F002E54F0 /* DayListViewController.h */,
-				0972E7171C419B7F002E54F0 /* DayListViewController.m */,
-				0972E71D1C41A7D0002E54F0 /* DayItemCell.h */,
-				0972E71E1C41A7D0002E54F0 /* DayItemCell.m */,
-				09A97CF51C4378F2004353F7 /* DayDetailStruct.m */,
-				09A97CF71C437900004353F7 /* DayDetailStruct.h */,
-				0972E7201C41F1D7002E54F0 /* FullDayOverlayView.h */,
-				0972E7211C41F1D7002E54F0 /* FullDayOverlayView.m */,
-				09A97CEF1C435C7C004353F7 /* TimeItemCell.h */,
-				09A97CF01C435C7C004353F7 /* TimeItemCell.m */,
-				09BA4B541C417A470037FFFE /* Main.storyboard */,
-				09BA4B571C417A470037FFFE /* Assets.xcassets */,
+				0913BDB81C448DF000AF72C1 /* View Controllers */,
+				0913BDB91C448E0100AF72C1 /* TableView cells */,
 				09BA4B591C417A470037FFFE /* LaunchScreen.storyboard */,
+				09BA4B541C417A470037FFFE /* Main.storyboard */,
 				09BA4B5C1C417A470037FFFE /* Info.plist */,
 				09BA4B4B1C417A470037FFFE /* Supporting Files */,
 			);
@@ -104,6 +117,9 @@
 		09BA4B4B1C417A470037FFFE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				09A97CF51C4378F2004353F7 /* DayDetailStruct.m */,
+				09A97CF71C437900004353F7 /* DayDetailStruct.h */,
+				09BA4B571C417A470037FFFE /* Assets.xcassets */,
 				09BA4B4C1C417A470037FFFE /* main.m */,
 			);
 			name = "Supporting Files";

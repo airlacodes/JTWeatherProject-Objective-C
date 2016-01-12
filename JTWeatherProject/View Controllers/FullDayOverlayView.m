@@ -7,10 +7,11 @@
 //
 
 #import "FullDayOverlayView.h"
-#import "OWMWeatherAPI.h"
 #import "AppDelegate.h"
 #import "TimeItemCell.h"
 #import "DayDetailStruct.h"
+
+#import "OWMWeatherAPI.h"
 
 /*! fixed layout values for detail scroll */
 const CGFloat IconPadding = 85.0f;
@@ -20,12 +21,24 @@ const CGFloat OffsetW = 5.0f;
 const CGFloat OffsetH = 20.0f;
 
 @interface FullDayOverlayView () {
+
+    /*! Better OpenWeather Interaction class to get tri hourly forecast */
     OWMWeatherAPI *_weatherAPI;
+
+    /*! Array of response data from OpenWeather, should contain full week of tri hourly daily forecast */
     NSMutableArray *_rawForecastArray;
+
+    /*! array of 3 hourly forecast for a single day */
     NSMutableArray *_dailyHourForecast;
+
+    /*! icon frame reference for scroll view */
     CGRect scrollDetailImageFrame;
 }
+
+/*! 3 hourly TableView */
 @property (strong, nonatomic) IBOutlet UITableView *dailyForecastTable;
+
+/*! scroll view of day details */
 @property (strong, nonatomic) IBOutlet UIScrollView *detailScroll;
 
 @end
@@ -36,9 +49,10 @@ const CGFloat OffsetH = 20.0f;
     [super awakeFromNib];
     _dailyForecastTable.delegate = self;
     _dailyForecastTable.dataSource = self;
-
     _rawForecastArray = [NSMutableArray array];
     _dailyHourForecast = [NSMutableArray array];
+
+    /// Listen for day selected from dayListViewController
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(_daySelected)
                                                  name:kFullDayOverlayDidLoadNotification
@@ -46,13 +60,15 @@ const CGFloat OffsetH = 20.0f;
 
 }
 
-///AKA ViewDidLoad
+/*! UIVisualEffect has no view did load, so this is its replacement */
 - (void)_daySelected {
-    NSDateComponents *selectedDate = [[NSCalendar currentCalendar] components:NSCalendarUnitDay
-                                                                     fromDate:_dailyForecastModel.dt];
     _rawForecastArray = [NSMutableArray array];
     _dailyHourForecast = [NSMutableArray array];
-    
+
+    /// Get calendar day of the month
+    NSDateComponents *selectedDate = [[NSCalendar currentCalendar] components:NSCalendarUnitDay
+                                                                     fromDate:_dailyForecastModel.dt];
+
     _weatherAPI = [[OWMWeatherAPI alloc] initWithAPIKey:kOpenWeatherAPIKey];
     [_weatherAPI setTemperatureFormat:kOWMTempCelcius];
     [_weatherAPI forecastWeatherByCoordinate:_currentLocation.coordinate
@@ -62,7 +78,7 @@ const CGFloat OffsetH = 20.0f;
                 return;
             }
             _rawForecastArray = result[@"list"];
-
+            /// Go through weekly forecast and get day we're intested in
             for (int i = 0; i < [_rawForecastArray count]; i++) {
                 NSDictionary *forecastData = [_rawForecastArray objectAtIndex:i];
                 NSDateComponents *weatherDate = [[NSCalendar currentCalendar]
@@ -70,6 +86,7 @@ const CGFloat OffsetH = 20.0f;
                                                  fromDate:forecastData[@"dt"]];
 
                 if ([weatherDate day] == [selectedDate day]) {
+                    /// only add the day we're selected
                     [_dailyHourForecast addObject:forecastData];
                 }
             }
@@ -78,8 +95,9 @@ const CGFloat OffsetH = 20.0f;
     }];
 }
 
-
+/*! User did exit this view */
 -(IBAction)closeOverlayPressed:(id) sender {
+    /// Flush Scroll view for next day
     _dailyHourForecast = nil;
     _dailyForecastModel = nil;
     [[_detailScroll subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -105,19 +123,17 @@ const CGFloat OffsetH = 20.0f;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *dayForecast = [_dailyHourForecast objectAtIndex:indexPath.row];
-
-    TimeItemCell *timeCell = [tableView dequeueReusableCellWithIdentifier:@"time_item_cell"];
+    // Format date/time stamp to 24hr time
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
+    dateFormatter.dateFormat = @"HH:mm a";
+    NSString *timeString = [dateFormatter stringFromDate:dayForecast[@"dt"]];
 
     UIImageView *cellSelectionImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tableViewSelectorLight.png"]];
     cellSelectionImage.alpha = 0.1;
+
+    TimeItemCell *timeCell = [tableView dequeueReusableCellWithIdentifier:@"time_item_cell"];
     timeCell.selectedBackgroundView = cellSelectionImage;
-
-    NSDateFormatter *dateformate=[[NSDateFormatter alloc]init];
-    dateformate.dateFormat = @"HH:mm a"; // Date formater
-    NSString *timeString = [dateformate stringFromDate:dayForecast[@"dt"]]; // Convert date to string
-
-
-    timeCell.timeLabel.text = timeString; 
+    timeCell.timeLabel.text = timeString;
     timeCell.temperatureLabel.text = [NSString stringWithFormat:@"%.1f℃ - %@",
                                       [dayForecast[@"main"][@"temp"] floatValue],
                                       dayForecast[@"weather"][0][@"main"]
@@ -125,6 +141,7 @@ const CGFloat OffsetH = 20.0f;
     return timeCell;
 }
 
+#pragma mark - Scroll Loader
 
 - (void)loadDayDetails {
     _detailScroll.backgroundColor = [UIColor clearColor];
@@ -140,27 +157,27 @@ const CGFloat OffsetH = 20.0f;
         detailIconImageView.frame = scrollDetailImageFrame;
         [_detailScroll addSubview:detailIconImageView];
 
-
-       UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(scrollDetailImageFrame.origin.x, 0, IconWH, LabelH)];
+        /// Weather type description
+        UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(scrollDetailImageFrame.origin.x, 0, IconWH, LabelH)];
         detailLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0f];
         detailLabel.textColor = [UIColor whiteColor];
         detailLabel.textAlignment = NSTextAlignmentCenter;
-        [_detailScroll addSubview:detailLabel];
         detailLabel.text = [day objectForKey:kTitle];
-
-        
-       UILabel* detailValue = [[UILabel alloc]initWithFrame:CGRectMake(scrollDetailImageFrame.origin.x,IconWH+30,IconWH + 10,LabelH)];
-        detailValue.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0f];
-        detailValue.textColor = [UIColor whiteColor];
-        detailValue.textAlignment = NSTextAlignmentCenter;
+        [_detailScroll addSubview:detailLabel];
 
         id value = [_dailyForecastModel valueForKey:[day objectForKey:kForecastModelKey]];
         if (value == nil) {
+            /// sometimes rain is nil instead of giving a 0
             value = [NSString stringWithFormat:@"0"];
         } else {
             value = [NSString stringWithFormat:@"%.01f", [value floatValue]];
         }
 
+        /// Weather values (humidity, pressure etc)
+        UILabel* detailValue = [[UILabel alloc]initWithFrame:CGRectMake(scrollDetailImageFrame.origin.x,IconWH+30,IconWH + 10,LabelH)];
+        detailValue.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0f];
+        detailValue.textColor = [UIColor whiteColor];
+        detailValue.textAlignment = NSTextAlignmentCenter;
         detailValue.text = [NSString stringWithFormat:@"%@,%@", value, [day objectForKey:kUnitType]];
         detailValue.adjustsFontSizeToFitWidth = YES;
         [_detailScroll addSubview:detailValue];
