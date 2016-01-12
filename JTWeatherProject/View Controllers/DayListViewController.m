@@ -25,6 +25,7 @@
     CLLocationCoordinate2D _locationCoordinate;
     BOOL _didGetLocation;
     NSString *locationDescription;
+    KFOWMDailyForecastResponseModel *_responseModel;
 }
 @property (weak, nonatomic) IBOutlet FullDayOverlayView *fullDayOverlay;
 @property (nonatomic, strong) KFOpenWeatherMapAPIClient *apiClient;
@@ -57,6 +58,15 @@
 
     ///Use current day to get the next remaining 4
     _listOfDays = [self _generateDays:[dateFormatter stringFromDate:[NSDate date]]];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(_dayClosed)
+                                                 name:kFullDayOverlayDidExitNotification
+                                               object:nil];
+}
+
+- (void)_dayClosed {
+    self.navigationController.navigationBar.hidden = NO;
 }
 
 #pragma mark - UITableViewDelegate
@@ -67,10 +77,15 @@
     _fullDayOverlay.dailyForecastModel = listModel;
     _fullDayOverlay.currentLocation = _locationManager.location; 
 
+    int temp = [[[_responseModel.list valueForKeyPath:@"temperature.max"] objectAtIndex:indexPath.row] intValue];
+    NSNumber *celcius = [self.apiClient kelvinToCelcius:[NSNumber numberWithInt:temp]];
+    NSString* formattedTemp = [NSString stringWithFormat:@"%.01f", [celcius floatValue]];
+    _fullDayOverlay.tempLabel.text = formattedTemp;
+    
     ///prepopulate labels
     _fullDayOverlay.dayLabel.text = [_listOfDays objectAtIndex:indexPath.row];
     _fullDayOverlay.locationLabel.text = locationDescription;
-
+    [_fullDayOverlay loadDayDetails]; 
     // Animate full day overlay
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [UIView transitionWithView:_fullDayOverlay
@@ -114,12 +129,14 @@
     self.apiClient = [[KFOpenWeatherMapAPIClient alloc] initWithAPIKey:kOpenWeatherAPIKey andAPIVersion:@"2.5"];
 
     // Requesting five days for some reason, the api gives yesterday. Hack = ask for 6.
+    [self.apiClient setTemperatureType:KFOWMTemperatureTypeCelcius];
     [self.apiClient dailyForecastForCoordinate:_locationCoordinate numberOfDays:6 withResultBlock:^(BOOL success, id responseData, NSError *error) {
         if (success) {
-            KFOWMDailyForecastResponseModel *responseModel = (KFOWMDailyForecastResponseModel *)responseData;
-            for (int i = 1; i < [responseModel count]; i++) {
+            _responseModel = (KFOWMDailyForecastResponseModel *)responseData;
+            for (int i = 1; i < [_responseModel count]; i++) {
                 /// _weatherDays contains weather models of each day
-                [_weatherDays addObject:responseModel.list[i]];
+                [_weatherDays addObject:_responseModel.list[i]];
+
             }
             [_dayListTableView reloadData];
         }
@@ -162,6 +179,7 @@
         [self.locationManager startUpdatingLocation];
     } else {
         NSLog(@"______LOCATION SERVICES NOT AVALIABLE");
+        [AppDelegate commonAlert:@"Enable Location Services" message:@"Please enable location services for this app."];
     }
 
 }
@@ -181,27 +199,18 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     NSLog(@"LOCATION ERROR_________: %@", error.localizedDescription);
+    [AppDelegate commonAlert:@"Enable Location Services" message:@"Please enable location services for this app."];
 }
 
 - (void)_setLocationDetails:(CLLocation *)location {
     CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
     [geocoder reverseGeocodeLocation:location
        completionHandler:^(NSArray *placemarks, NSError *error) {
-           NSLog(@"reverseGeocodeLocation:completionHandler: Completion Handler called!");
-
            if (error){
                NSLog(@"Geocode failed with error: %@", error);
                return;
            }
            _placeMarker = [placemarks objectAtIndex:0];
-
-           NSLog(@"placemark.ISOcountryCode %@",_placeMarker.ISOcountryCode);
-           NSLog(@"placemark.country %@",_placeMarker.country);
-           NSLog(@"placemark.postalCode %@",_placeMarker.postalCode);
-           NSLog(@"placemark.administrativeArea %@",_placeMarker.administrativeArea);
-           NSLog(@"placemark.locality %@",_placeMarker.locality);
-           NSLog(@"placemark.subLocality %@",_placeMarker.subLocality);
-           NSLog(@"placemark.subThoroughfare %@",_placeMarker.subThoroughfare);
            self.title = [NSString stringWithFormat:@"%@ Forecast", _placeMarker.locality];
            locationDescription = [NSString stringWithFormat:@"%@, %@", _placeMarker.locality, _placeMarker.ISOcountryCode];
        }];

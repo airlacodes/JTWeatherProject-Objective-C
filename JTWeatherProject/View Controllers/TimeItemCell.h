@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TimeItemCell : UITableViewCell
+@interface TimeItemCell : UITableViewCell <UIScrollViewAccessibilityDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *temperatureLabel;

@@ -15,24 +15,31 @@ NSArray *DayDetails() {
         details = @[
 
                     @{
-                        kBackgroundImage : @"temp",
-                        kTitle : @"Temp",
-                        },
-                    @{
-                        kBackgroundImage : @"humidity",
-                        kTitle : @"Humidity",
-                        },
-                    @{
-                        kBackgroundImage: @"pressure",
-                        kTitle: @"Pressure",
-                        },
-                    @{
                         kBackgroundImage : @"rain",
-                        kTitle : @"Rain",
+                        kTitle : @"Rain (%)",
+                        kForecastModelKey : @"rain",
+                        kUnitType : @"%",
+
                         },
                     @{
                         kBackgroundImage: @"wind",
                         kTitle: @"Wind",
+                        kForecastModelKey : @"windSpeed",
+                        kUnitType : @"mph",
+
+                        },
+                    @{
+                        kBackgroundImage : @"humidity",
+                        kTitle : @"Humidity",
+                        kForecastModelKey : @"humidity",
+                        kUnitType : @"%",
+
+                        },
+                    @{
+                        kBackgroundImage: @"pressure",
+                        kTitle: @"Pressure",
+                        kForecastModelKey : @"pressure",
+                        kUnitType : @"mb",
                         },
                     ];
     });

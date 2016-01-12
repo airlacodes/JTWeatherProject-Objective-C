@@ -7,16 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+
+/*!Helpful Constants that are used across the app */
 FOUNDATION_EXTERN NSString *const kOpenWeatherAPIKey;
 FOUNDATION_EXTERN NSString *const kFullDayOverlayDidLoadNotification;
-
+FOUNDATION_EXTERN NSString *const kFullDayOverlayDidExitNotification;
 FOUNDATION_EXTERN NSString *const kBackgroundImage;
 FOUNDATION_EXTERN NSString *const kTitle;
+FOUNDATION_EXTERN NSString *const kForecastModelKey;
+FOUNDATION_EXTERN NSString *const kUnitType;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+/*! Presents generic alert view */
++ (void)commonAlert:(NSString *)title message:(NSString *)message;
 
+@property (strong, nonatomic) UIWindow *window;
 
 @end
 
